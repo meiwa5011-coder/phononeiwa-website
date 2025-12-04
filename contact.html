@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 株式会社フォノン明和</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="jsmain.js" defer></script>
+    <meta property="og:title" content="お問い合わせ | 株式会社フォノン明和">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.phonon-meiwa.co.jp/contact.html">
+    <meta property="og:image" content="https://www.phonon-meiwa.co.jp/images/ogp.jpg">
+    <meta property="og:description" content="株式会社フォノン明和へのお問い合わせはこちらから。">
+    <meta property="og:site_name" content="株式会社フォノン明和">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        .page-header {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .required {
+            color: #e60012;
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="global-header">
+        <div class="header-inner">
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.gif" alt="Phonon Meiwa Inc."></a>
+            </h1>
+            <div class="language-selector">
+                <div class="lang-switch">
+                    <button class="lang-current" aria-label="Select Language">
+                        <span class="lang-icon">🌐</span> Language <span class="arrow">▼</span>
+                    </button>
+                    <ul class="lang-menu">
+                        <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
+                        <li><a href="index_en.html" data-lang="en">English</a></li>
+                        </button>
+                </div>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li>
+                        <a href="#">ニュース</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>ニュース</h3>
+                                    <ul>
+                                        <li><a href="news.html">新着情報</a></li>
+                                        <li><a href="news.html">お知らせ一覧</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="company.html">会社情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>会社概要</h3>
+                                    <ul>
+                                        <li><a href="company_philosophy.html">経営理念</a></li>
+                                        <li><a href="company_message.html">社長メッセージ</a></li>
+                                        <li><a href="company_profile.html">会社概要</a></li>
+                                        <li><a href="company_history.html">沿革</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>企業情報</h3>
+                                    <ul>
+                                        <li><a href="company_office.html">事業所一覧</a></li>
+                                        <li><a href="company_policy.html">品質・環境方針</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">製品情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>製品カテゴリ</h3>
+                                    <ul>
+                                        <li><a href="products.html">フェライトコア</a></li>
+                                        <li><a href="products.html">セラミック基板</a></li>
+                                        <li><a href="products.html">電子部品</a></li>
+                                        <li><a href="products.html">新製品情報</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>技術情報</h3>
+                                    <ul>
+                                        <li><a href="#">技術資料</a></li>
+                                        <li><a href="#">カタログダウンロード</a></li>
+                                        <li><a href="#">技術サポート</a></li>
+                                        <li><a href="#">よくあるご質問</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">サステナビリティ</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>環境への取り組み</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">環境方針</a></li>
+                                        <li><a href="sustainability.html">環境マネジメント</a></li>
+                                        <li><a href="sustainability.html">環境報告書</a></li>
+                                        <li><a href="sustainability.html">グリーン調達</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>CSR活動</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">社会貢献活動</a></li>
+                                        <li><a href="sustainability.html">地域貢献</a></li>
+                                        <li><a href="sustainability.html">従業員の働き方</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">採用情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>採用情報</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">新卒採用</a></li>
+                                        <li><a href="recruit.html">キャリア採用</a></li>
+                                        <li><a href="recruit.html">インターンシップ</a></li>
+                                        <li><a href="recruit.html">社員インタビュー</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>働く環境</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">福利厚生</a></li>
+                                        <li><a href="recruit.html">研修制度</a></li>
+                                        <li><a href="recruit.html">ワークライフバランス</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="contact.html" class="nav-contact-button">お問い合わせ</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>お問い合わせ</h1>
+            </div>
+        </div>
+
+        <div class="contact-form-container">
+            <p style="margin-bottom: 30px; text-align: center;">製品やサービスに関するお問い合わせは、以下のフォームよりお気軽にご連絡ください。</p>
+            <form class="contact-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">お名前 <span class="required">必須</span></label>
+                    <input type="text" id="name" name="name" required placeholder="山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">必須</span></label>
+                    <input type="email" id="email" name="email" required placeholder="info@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="subject">件名 <span class="required">必須</span></label>
+                    <input type="text" id="subject" name="subject" required placeholder="製品について">
+                </div>
+                <div class="form-group">
+                    <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+                    <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">送信する</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="global-footer">
+        <div class="footer-inner">
+            <div class="footer-info">
+                <p>株式会社フォノン明和</p>
+                <p>〒489-0003　愛知県瀬戸市穴田町965番地</p>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="products.html">製品情報</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="sustainability.html">サステナビリティ</a></li>
+                    <li><a href="recruit.html">採用情報</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="copyright">
+            <small>Copyright (C) 2025 Phonon Meiwa Inc. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+</body>
+
+</html>

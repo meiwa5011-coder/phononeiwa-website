@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>採用情報 | 株式会社フォノン明和</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004d9c',
+                        accent: '#e60012',
+                        dark: '#0f172a',
+                        'slate-light': '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                        display: ['"Oswald"', 'sans-serif'], // Assuming we might want a display font, but sticking to standard for now with weight
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="main.css">
+    <script src="jsmain.js" defer></script>
+    <style>
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* Parallax Background */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-white antialiased">
+
+    <!-- Global Header -->
+    <header class="global-header">
+        <div class="header-inner">
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.gif" alt="Phonon Meiwa Inc."></a>
+            </h1>
+            <div class="language-selector">
+                <div class="lang-switch">
+                    <button class="lang-current" aria-label="Select Language">
+                        <span class="lang-icon">🌐</span> 日本語 <span class="arrow">▼</span>
+                    </button>
+                    <ul class="lang-menu">
+                        <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
+                        <li><a href="index_en.html" data-lang="en">English</a></li>
+                        <li><a href="index_zh.html" data-lang="zh">中文</a></li>
+                        <li><a href="index_ko.html" data-lang="ko">한국어</a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li>
+                        <a href="#">ニュース</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>ニュース</h3>
+                                    <ul>
+                                        <li><a href="news.html">新着情報</a></li>
+                                        <li><a href="news.html">お知らせ一覧</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="company.html">会社情報</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>会社概要</h3>
+                                    <ul>
+                                        <li><a href="company_philosophy.html">経営理念</a></li>
+                                        <li><a href="company_message.html">社長メッセージ</a></li>
+                                        <li><a href="company_profile.html">会社概要</a></li>
+                                        <li><a href="company_history.html">沿革</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>企業情報</h3>
+                                    <ul>
+                                        <li><a href="company_office.html">事業所一覧</a></li>
+                                        <li><a href="company_policy.html">品質・環境方針</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">製品情報</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>製品カテゴリ</h3>
+                                    <ul>
+                                        <li><a href="products.html">フェライトコア</a></li>
+                                        <li><a href="products.html">セラミック基板</a></li>
+                                        <li><a href="products.html">電子部品</a></li>
+                                        <li><a href="products.html">新製品情報</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>技術情報</h3>
+                                    <ul>
+                                        <li><a href="#">技術資料</a></li>
+                                        <li><a href="#">カタログダウンロード</a></li>
+                                        <li><a href="#">技術サポート</a></li>
+                                        <li><a href="#">よくあるご質問</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">サステナビリティ</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>環境への取り組み</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">環境方針</a></li>
+                                        <li><a href="sustainability.html">環境マネジメント</a></li>
+                                        <li><a href="sustainability.html">環境報告書</a></li>
+                                        <li><a href="sustainability.html">グリーン調達</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>CSR活動</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">社会貢献活動</a></li>
+                                        <li><a href="sustainability.html">地域貢献</a></li>
+                                        <li><a href="sustainability.html">従業員の働き方</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">採用情報</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>採用情報</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">新卒採用</a></li>
+                                        <li><a href="recruit.html">キャリア採用</a></li>
+                                        <li><a href="recruit.html">インターンシップ</a></li>
+                                        <li><a href="recruit.html">社員インタビュー</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>働く環境</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">福利厚生</a></li>
+                                        <li><a href="recruit.html">研修制度</a></li>
+                                        <li><a href="recruit.html">ワークライフバランス</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="contact.html" class="nav-contact-button">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="メニュー開閉">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="overflow-hidden">
+        <!-- 1. Hero Section: High Impact, Parallax -->
+        <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+            <!-- Parallax Background -->
+            <div class="absolute inset-0 z-0 parallax-bg" style="background-image: url('images/hero1.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/60 to-transparent"></div>
+            </div>
+
+            <div class="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-white reveal-on-scroll is-visible">
+                    <div
+                        class="inline-block px-4 py-1 border border-accent text-accent tracking-widest text-sm font-bold mb-6 uppercase">
+                        Recruit</div>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 tracking-tight">
+                        FUTURE <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">ENGINEERING</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl font-light text-gray-300 mb-10 max-w-lg leading-relaxed">
+                        未来を築く、あなたの技術を。<br>
+                        セラミック・フェライトの最前線で、<br>
+                        世界を変える挑戦をしよう。
+                    </p>
+                    <a href="#message"
+                        class="group inline-flex items-center gap-3 px-8 py-4 bg-accent hover:bg-white hover:text-accent text-white font-bold transition-all duration-300 rounded-sm">
+                        <span>VIEW MORE</span>
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <!-- Decorative Element -->
+                <div class="hidden md:block relative h-full">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/10 rounded-full animate-[spin_20s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-accent/20 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce-slow">
+                <div class="w-[1px] h-20 bg-gradient-to-b from-white to-transparent mx-auto"></div>
+                <span class="block text-white text-xs tracking-widest mt-2 uppercase">Scroll</span>
+            </div>
+        </section>
+
+        <!-- 2. Message Section: Overlapping Layout -->
+        <section id="message" class="py-32 bg-white relative">
+            <div class="container mx-auto px-6 max-w-6xl relative z-10">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Image Area -->
+                    <div class="md:w-1/2 relative reveal-on-scroll">
+                        <div class="relative z-10 shadow-2xl">
+                            <img src="images/hero2.jpg" alt="Representative"
+                                class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <!-- Decorative Box -->
+                        <div
+                            class="absolute -bottom-10 -left-10 w-full h-full border-4 border-primary/10 -z-10 hidden md:block">
+                        </div>
+                    </div>
+
+                    <!-- Text Area (Overlapping) -->
+                    <div class="md:w-1/2 md:-ml-20 mt-10 md:mt-0 relative z-20 reveal-on-scroll stagger-delay-2">
+                        <div class="glass-panel p-10 md:p-16 shadow-xl">
+                            <h2 class="text-sm font-bold text-accent tracking-widest mb-4 uppercase">Top Message</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-dark mb-8 leading-tight">
+                                技術革新で、<br>社会インフラの根幹を支える。
+                            </h3>
+                            <p class="text-gray-600 leading-loose mb-6">
+                                私たちフォノン明和は、創業以来、独自のセラミック・フェライト技術を磨き続け、エレクトロニクス産業の発展に貢献してきました。
+                                5G通信、電気自動車、IoTなど、社会が大きく変化する中で、私たちの技術はますます重要な役割を果たしています。
+                            </p>
+                            <div class="flex items-center gap-4 mt-8">
+                                <div class="h-[1px] w-12 bg-dark"></div>
+                                <div>
+                                    <p class="text-sm text-gray-500">代表取締役社長</p>
+                                    <p class="text-xl font-bold font-serif">明和 太郎</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Business & Jobs Section: Dark Theme for Contrast -->
+        <section class="py-32 bg-dark text-white relative clip-diagonal">
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal-on-scroll">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-2">BUSINESS & JOBS</h2>
+                        <div class="h-1 w-20 bg-accent"></div>
+                    </div>
+                    <p class="text-gray-400 mt-4 md:mt-0 max-w-md text-right">
+                        世界を動かす技術、その最前線。<br>
+                        あなたの専門性を活かせるフィールドがここにあります。
+                    </p>
+                </div>
+
+                <!-- Job Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Job 1 -->
+                    <div
+                        class="group relative bg-gray-800 hover:bg-primary transition-colors duration-500 overflow-hidden reveal-on-scroll stagger-delay-1">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="text-6xl font-black">01</span>
+                        </div>
+                        <div class="p-10 h-full flex flex-col">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold mb-2">プラントエンジニア</h3>
+                                <p class="text-accent text-sm font-bold tracking-wider">PLANT ENGINEER</p>
+                            </div>
+                            <p class="text-gray-400 group-hover:text-white/90 mb-8 leading-relaxed transition-colors">
+                                生産設備の設計、導入、改善業務を担当します。機械工学の知識を活かし、効率的な生産ラインを構築します。
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#requirements"
+                                    class="inline-flex items-center text-sm font-bold border-b border-white/30 pb-1 group-hover:border-white transition-colors">
+                                    MORE DETAILS
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div
+                        class="group relative bg-gray-800 hover:bg-primary transition-colors duration-500 overflow-hidden reveal-on-scroll stagger-delay-2">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="text-6xl font-black">02</span>
+                        </div>
+                        <div class="p-10 h-full flex flex-col">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold mb-2">機械設計</h3>
+                                <p class="text-accent text-sm font-bold tracking-wider">MECHANICAL DESIGN</p>
+                            </div>
+                            <p class="text-gray-400 group-hover:text-white/90 mb-8 leading-relaxed transition-colors">
+                                金型や治具の設計開発を行います。ミクロン単位の精度が求められる、モノづくりの核心部分です。
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#requirements"
+                                    class="inline-flex items-center text-sm font-bold border-b border-white/30 pb-1 group-hover:border-white transition-colors">
+                                    MORE DETAILS
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div
+                        class="group relative bg-gray-800 hover:bg-primary transition-colors duration-500 overflow-hidden reveal-on-scroll stagger-delay-3">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="text-6xl font-black">03</span>
+                        </div>
+                        <div class="p-10 h-full flex flex-col">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold mb-2">電気計装</h3>
+                                <p class="text-accent text-sm font-bold tracking-wider">ELECTRICAL CONTROL</p>
+                            </div>
+                            <p class="text-gray-400 group-hover:text-white/90 mb-8 leading-relaxed transition-colors">
+                                工場の自動化（FA）を推進する制御システムの設計・構築。PLCやシーケンス制御を担当します。
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#requirements"
+                                    class="inline-flex items-center text-sm font-bold border-b border-white/30 pb-1 group-hover:border-white transition-colors">
+                                    MORE DETAILS
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Environment & Culture: Clean & Spacious -->
+        <section class="py-32 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-20 reveal-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">ENVIRONMENT</h2>
+                    <p class="text-gray-500 tracking-widest">働く環境とカルチャー</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-12">
+                        <div class="reveal-on-scroll stagger-delay-1">
+                            <h3 class="text-2xl font-bold text-dark mb-4 border-l-4 border-accent pl-4">技術を大切にする社風</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                「良い製品は良い技術から」という考えのもと、技術者の探究心を尊重します。新しいアイデアや改善提案が歓迎される風通しの良い職場です。
+                            </p>
+                        </div>
+                        <div class="reveal-on-scroll stagger-delay-2">
+                            <h3 class="text-2xl font-bold text-dark mb-4 border-l-4 border-accent pl-4">充実した研修制度</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                入社後のOJTはもちろん、外部講習への参加支援や資格取得奨励制度など、社員のスキルアップを全力でバックアップします。
+                            </p>
+                        </div>
+                        <div class="reveal-on-scroll stagger-delay-3">
+                            <h3 class="text-2xl font-bold text-dark mb-4 border-l-4 border-accent pl-4">チームワーク</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                部署の垣根を超えたプロジェクト活動が活発です。ベテランから若手まで、互いに教え合い、高め合う文化が根付いています。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Grid -->
+                    <div class="grid grid-cols-2 gap-4 reveal-on-scroll">
+                        <img src="images/hero3.jpg"
+                            class="w-full h-64 object-cover rounded-sm shadow-lg transform translate-y-8">
+                        <img src="images/hero2.jpg"
+                            class="w-full h-64 object-cover rounded-sm shadow-lg transform -translate-y-8">
+                    </div>
+                </div>
+
+                <!-- Data Section -->
+                <div class="mt-24 bg-white p-12 shadow-xl rounded-sm border-t-4 border-primary reveal-on-scroll">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-2">年間休日</p>
+                            <p class="text-4xl font-black text-dark">125<span
+                                    class="text-base font-normal text-gray-400 ml-1">days</span></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-2">有給取得日数</p>
+                            <p class="text-4xl font-black text-dark">12.5<span
+                                    class="text-base font-normal text-gray-400 ml-1">days</span></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-2">残業時間/月</p>
+                            <p class="text-4xl font-black text-dark">15<span
+                                    class="text-base font-normal text-gray-400 ml-1">hours</span></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-2">育休取得率</p>
+                            <p class="text-4xl font-black text-dark">100<span
+                                    class="text-base font-normal text-gray-400 ml-1">%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Employee Voice: Magazine Style -->
+        <section class="py-32 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-20 reveal-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">INTERVIEW</h2>
+                    <p class="text-gray-500 tracking-widest">社員の声</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Interview 1 -->
+                    <div class="group cursor-pointer reveal-on-scroll stagger-delay-1">
+                        <div class="relative overflow-hidden mb-6">
+                            <img src="images/hero1.jpg"
+                                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                <p class="text-white font-bold">もっと詳しく読む &rarr;</p>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold leading-snug mb-3 group-hover:text-primary transition-colors">
+                            「自分のアイデアが<br>形になる面白さ」
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-2">技術部 製造課 / 2018年入社</p>
+                    </div>
+
+                    <!-- Interview 2 -->
+                    <div class="group cursor-pointer reveal-on-scroll stagger-delay-2">
+                        <div class="relative overflow-hidden mb-6">
+                            <img src="images/hero2.jpg"
+                                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                <p class="text-white font-bold">もっと詳しく読む &rarr;</p>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold leading-snug mb-3 group-hover:text-primary transition-colors">
+                            「お客様の信頼を守る<br>最後の砦」
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-2">品質保証部 / 2020年入社</p>
+                    </div>
+
+                    <!-- Interview 3 -->
+                    <div class="group cursor-pointer reveal-on-scroll stagger-delay-3">
+                        <div class="relative overflow-hidden mb-6">
+                            <img src="images/hero3.jpg"
+                                class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                <p class="text-white font-bold">もっと詳しく読む &rarr;</p>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold leading-snug mb-3 group-hover:text-primary transition-colors">
+                            「技術とお客様をつなぐ<br>架け橋」
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-2">営業部 / 2015年入社</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Requirements: Clean Table & CTA -->
+        <section id="requirements" class="py-32 bg-slate-light relative clip-diagonal-reverse">
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">REQUIREMENTS</h2>
+                    <p class="text-gray-500 tracking-widest">募集要項</p>
+                </div>
+
+                <div class="bg-white shadow-lg rounded-sm overflow-hidden mb-16 reveal-on-scroll">
+                    <table class="w-full text-left border-collapse">
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-6 px-8 bg-white font-bold text-dark w-1/3 border-r border-gray-100">応募対象
+                                </th>
+                                <td class="py-6 px-8 text-gray-600">2026年3月卒業見込みの方（大学院・大学・高専・短大・専門学校）、または既卒3年以内の方</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-6 px-8 bg-white font-bold text-dark border-r border-gray-100">募集職種</th>
+                                <td class="py-6 px-8 text-gray-600">
+                                    <ul class="list-disc list-inside space-y-1">
+                                        <li>プラントエンジニア</li>
+                                        <li>機械設計</li>
+                                        <li>電気計装</li>
+                                        <li>品質管理</li>
+                                        <li>技術営業</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-6 px-8 bg-white font-bold text-dark border-r border-gray-100">給与</th>
+                                <td class="py-6 px-8 text-gray-600">
+                                    <div class="space-y-2">
+                                        <p><span class="inline-block w-20 text-gray-400">修士了</span>月給 245,000円</p>
+                                        <p><span class="inline-block w-20 text-gray-400">学部卒</span>月給 225,000円</p>
+                                        <p><span class="inline-block w-20 text-gray-400">高専卒</span>月給 205,000円</p>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-2">※経験・能力を考慮の上、当社規定により優遇します。</p>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-6 px-8 bg-white font-bold text-dark border-r border-gray-100">勤務地</th>
+                                <td class="py-6 px-8 text-gray-600">本社（愛知県瀬戸市）、または各工場</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center reveal-on-scroll">
+                    <a href="contact.html"
+                        class="group relative inline-flex items-center justify-center px-12 py-5 bg-accent text-white font-bold text-lg tracking-widest overflow-hidden rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
+                        <span
+                            class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-80 group-hover:h-80 opacity-10"></span>
+                        <span class="relative">ENTRY NOW</span>
+                        <svg class="w-5 h-5 ml-2 relative group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                    <p class="mt-6 text-gray-400 text-sm">お問い合わせフォームへ移動します</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="global-footer">
+        <div class="footer-inner">
+            <div class="footer-info">
+                <p>株式会社フォノン明和</p>
+                <p>〒489-0003　愛知県瀬戸市穴田町965番地</p>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="products.html">製品情報</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="sustainability.html">サステナビリティ</a></li>
+                    <li><a href="recruit.html">採用情報</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="copyright">
+            <small>Copyright (C) 2025 Phonon Meiwa Inc. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        // Advanced Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.reveal-on-scroll');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

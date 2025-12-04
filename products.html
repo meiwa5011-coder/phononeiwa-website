@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>製品情報 | 株式会社フォノン明和</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="jsmain.js" defer></script>
+    <meta property="og:title" content="製品情報 | 株式会社フォノン明和">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.phonon-meiwa.co.jp/products.html">
+    <meta property="og:image" content="https://www.phonon-meiwa.co.jp/images/ogp.jpg">
+    <meta property="og:description" content="株式会社フォノン明和の製品情報（フェライトコア、セラミック基板、電子部品など）をご紹介します。">
+    <meta property="og:site_name" content="株式会社フォノン明和">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        .page-header {
+            background-color: #f0f0f0;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .product-section {
+            margin-bottom: 100px;
+            scroll-margin-top: 100px;
+            /* ヘッダーの高さ分ずらす */
+        }
+
+        .product-section h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .product-image {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .product-info p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .spec-table th,
+        .spec-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .spec-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+            }
+
+            .product-image {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="global-header">
+        <div class="header-inner">
+            <h1 class="logo">
+                <a href="index.html"><img src="images/logo.gif" alt="Phonon Meiwa Inc."></a>
+            </h1>
+            <div class="language-selector">
+                <div class="lang-switch">
+                    <button class="lang-current" aria-label="Select Language">
+                        <span class="lang-icon">🌐</span> Language <span class="arrow">▼</span>
+                    </button>
+                    <ul class="lang-menu">
+                        <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
+                        <li><a href="index_en.html" data-lang="en">English</a></li>
+                        </button>
+                </div>
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li>
+                        <a href="#">ニュース</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>ニュース</h3>
+                                    <ul>
+                                        <li><a href="news.html">新着情報</a></li>
+                                        <li><a href="news.html">お知らせ一覧</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="company.html">会社情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>会社概要</h3>
+                                    <ul>
+                                        <li><a href="company_philosophy.html">経営理念</a></li>
+                                        <li><a href="company_message.html">社長メッセージ</a></li>
+                                        <li><a href="company_profile.html">会社概要</a></li>
+                                        <li><a href="company_history.html">沿革</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>企業情報</h3>
+                                    <ul>
+                                        <li><a href="company_office.html">事業所一覧</a></li>
+                                        <li><a href="company_policy.html">品質・環境方針</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">製品情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>製品カテゴリ</h3>
+                                    <ul>
+                                        <li><a href="products.html">フェライトコア</a></li>
+                                        <li><a href="products.html">セラミック基板</a></li>
+                                        <li><a href="products.html">電子部品</a></li>
+                                        <li><a href="products.html">新製品情報</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>技術情報</h3>
+                                    <ul>
+                                        <li><a href="#">技術資料</a></li>
+                                        <li><a href="#">カタログダウンロード</a></li>
+                                        <li><a href="#">技術サポート</a></li>
+                                        <li><a href="#">よくあるご質問</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">サステナビリティ</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>環境への取り組み</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">環境方針</a></li>
+                                        <li><a href="sustainability.html">環境マネジメント</a></li>
+                                        <li><a href="sustainability.html">環境報告書</a></li>
+                                        <li><a href="sustainability.html">グリーン調達</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>CSR活動</h3>
+                                    <ul>
+                                        <li><a href="sustainability.html">社会貢献活動</a></li>
+                                        <li><a href="sustainability.html">地域貢献</a></li>
+                                        <li><a href="sustainability.html">従業員の働き方</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">採用情報</a>
+                        <div class="mega-menu">
+
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>採用情報</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">新卒採用</a></li>
+                                        <li><a href="recruit.html">キャリア採用</a></li>
+                                        <li><a href="recruit.html">インターンシップ</a></li>
+                                        <li><a href="recruit.html">社員インタビュー</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>働く環境</h3>
+                                    <ul>
+                                        <li><a href="recruit.html">福利厚生</a></li>
+                                        <li><a href="recruit.html">研修制度</a></li>
+                                        <li><a href="recruit.html">ワークライフバランス</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="contact.html" class="nav-contact-button">お問い合わせ</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>製品情報</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <section id="ferrite" class="product-section">
+                <h2>フェライトコア</h2>
+                <div class="product-detail">
+                    <div class="product-image">
+                        <img src="images/product_ferrite.jpg" alt="フェライトコア">
+                    </div>
+                    <div class="product-info">
+                        <h3>電源・通信用高品質コア</h3>
+                        <p>独自の材料技術により、高透磁率・低損失を実現したフェライトコアです。スイッチング電源、ノイズ対策、通信機器など幅広い用途に対応します。</p>
+                        <p>お客様のニーズに合わせたカスタム形状の設計・製造も承ります。</p>
+                        <table class="spec-table">
+                            <tr>
+                                <th>材質</th>
+                                <th>初透磁率 (μi)</th>
+                                <th>飽和磁束密度 (Bs)</th>
+                            </tr>
+                            <tr>
+                                <td>Mn-Zn系</td>
+                                <td>2,000 - 15,000</td>
+                                <td>500mT</td>
+                            </tr>
+                            <tr>
+                                <td>Ni-Zn系</td>
+                                <td>10 - 2,000</td>
+                                <td>300 - 400mT</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ceramic" class="product-section">
+                <h2>セラミック基板</h2>
+                <div class="product-detail">
+                    <div class="product-image">
+                        <img src="images/product_ferrite.jpg" alt="セラミック基板">
+                    </div>
+                    <div class="product-info">
+                        <h3>パワーモジュール向け高放熱基板</h3>
+                        <p>熱伝導率に優れたアルミナ、窒化アルミニウム基板です。パワー半導体モジュールやLED照明など、放熱性が求められる用途に最適です。</p>
+                        <p>高精度な寸法管理と、優れた電気絶縁性を両立しています。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="components" class="product-section">
+                <h2>電子部品</h2>
+                <div class="product-detail">
+                    <div class="product-image">
+                        <img src="images/product_ferrite.jpg" alt="電子部品">
+                    </div>
+                    <div class="product-info">
+                        <h3>多様な電子部品材料</h3>
+                        <p>抵抗器用碍子、センサ用ケース、絶縁スペーサーなど、様々な電子部品に使用されるセラミックパーツを提供しています。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="global-footer">
+        <div class="footer-inner">
+            <div class="footer-info">
+                <p>株式会社フォノン明和</p>
+                <p>〒489-0003　愛知県瀬戸市穴田町965番地</p>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="products.html">製品情報</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="sustainability.html">サステナビリティ</a></li>
+                    <li><a href="recruit.html">採用情報</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="copyright">
+            <small>Copyright (C) 2025 Phonon Meiwa Inc. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+</body>
+
+</html>
