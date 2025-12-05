@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
             globalNav.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
+
+        // Close button logic
+        const menuClose = document.querySelector('.menu-close');
+        if (menuClose) {
+            menuClose.addEventListener('click', function () {
+                globalNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        }
     }
 
     // --- ヒーロースライダー ---
@@ -179,5 +188,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const animatedElements = document.querySelectorAll('.fade-in-up');
     animatedElements.forEach(el => observer.observe(el));
+
+    // --- Mega Menu Close Button (PC) ---
+    document.querySelectorAll('.mega-menu-close').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const megaMenu = btn.closest('.mega-menu');
+            if (megaMenu) {
+                megaMenu.style.display = 'none';
+                // Reset when mouse leaves the parent li to allow hovering again later
+                const parentLi = megaMenu.closest('li');
+                if (parentLi) {
+                    const onMouseLeave = () => {
+                        megaMenu.style.display = ''; // Reset inline style
+                        parentLi.removeEventListener('mouseleave', onMouseLeave);
+                    };
+                    parentLi.addEventListener('mouseleave', onMouseLeave);
+                }
+            }
+        });
+    });
 
 });
