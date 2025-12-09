@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>沿革 | 株式会社フォノン明和</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="jsmain.js" defer></script>
     <meta property="og:title" content="沿革 | 株式会社フォノン明和">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.phonon-meiwa.co.jp/company_history.html">
@@ -14,10 +12,78 @@
     <meta property="og:description" content="株式会社フォノン明和の沿革をご紹介します。">
     <meta property="og:site_name" content="株式会社フォノン明和">
     <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004d9c',
+                        accent: '#e60012',
+                        dark: '#0f172a',
+                        'slate-light': '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="main.css">
+    <script src="jsmain.js" defer></script>
+    <style>
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax Background */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 
-<body>
+<body class="font-sans text-gray-800 bg-white antialiased">
 
+    <!-- Global Header -->
     <header class="global-header">
         <div class="header-inner">
             <h1 class="logo">
@@ -26,7 +92,7 @@
             <div class="language-selector">
                 <div class="lang-switch">
                     <button class="lang-current" aria-label="Select Language">
-                        <span class="lang-icon">🌐</span> Language <span class="arrow">▼</span>
+                        <span class="lang-icon">🌐</span> 日本語 <span class="arrow">▼</span>
                     </button>
                     <ul class="lang-menu">
                         <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
@@ -41,8 +107,8 @@
                     <li>
                         <a href="#">ニュース</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>ニュース</h3>
                                     <ul>
@@ -56,8 +122,8 @@
                     <li>
                         <a href="company.html">会社情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>会社概要</h3>
                                     <ul>
@@ -80,8 +146,8 @@
                     <li>
                         <a href="#">製品情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>製品カテゴリ</h3>
                                     <ul>
@@ -106,8 +172,8 @@
                     <li>
                         <a href="#">サステナビリティ</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>環境への取り組み</h3>
                                     <ul>
@@ -131,8 +197,8 @@
                     <li>
                         <a href="#">採用情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>採用情報</h3>
                                     <ul>
@@ -164,377 +230,404 @@
         </div>
     </header>
 
-    <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>沿革</h1>
+    <main class="overflow-hidden">
+        <!-- 1. Hero Section -->
+        <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0 parallax-bg" style="background-image: url('images/company_history.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/50 to-transparent"></div>
             </div>
-        </div>
 
-        <div class="container">
+            <div class="relative z-10 container mx-auto px-6 text-center">
+                <div class="reveal-on-scroll is-visible">
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-widest mb-4 text-accent uppercase">Company
+                        History</h2>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-white">
+                        HISTORY
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-100 font-medium tracking-wider">
+                        沿革
+                    </p>
+                </div>
+            </div>
+        </section>
 
-            <!-- Visual History Section -->
-            <section class="visual-history-section">
-                <h2 class="visual-history-title">これまでも これからも 時代・社会・人と共に</h2>
-                <div class="visual-history-chart">
-                    <!-- Timeline Header -->
-                    <div class="vh-timeline">
-                        <div class="vh-col">
-                            <div class="vh-year">1894<small>創業</small></div>
-                        </div>
-                        <div class="vh-col">
-                            <div class="vh-year">1910<small>年代</small></div>
-                        </div>
-                        <div class="vh-col">
-                            <div class="vh-year">1980<small>年代</small></div>
-                        </div>
-                        <div class="vh-col">
-                            <div class="vh-year">2000<small>年代</small></div>
-                        </div>
-                        <div class="vh-col">
-                            <div class="vh-year">2010<small>年代</small></div>
-                        </div>
-                        <div class="vh-col">
-                            <div class="vh-year">2020<small>年代</small></div>
-                        </div>
-                    </div>
+        <!-- 2. Visual History Chart -->
+        <section class="py-24 bg-slate-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">これまでも これからも 時代・社会・人と共に</h2>
+                    <div class="w-16 h-1 bg-primary mx-auto"></div>
+                </div>
 
-                    <!-- Phonon Meiwa Products -->
-                    <div class="vh-row vh-our-products">
-                        <div class="vh-label">フォノン明和</div>
-                        <div class="vh-items">
-                            <div class="vh-item-group group-early">
-                                <div class="vh-img-placeholder">創業時の様子</div>
-                                <div class="vh-img-placeholder">碍子</div>
-                                <p>碍子</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">基板</div>
-                                <p>基板</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">フェライト</div>
-                                <p>フェライトコア</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">ドラムコア</div>
-                                <p>ドラムコア</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">極小部品</div>
-                                <p>より小型に</p>
+                <div class="overflow-x-auto pb-8 reveal-on-scroll">
+                    <div class="min-w-[800px] bg-white p-8 rounded-xl shadow-lg">
+                        <!-- Timeline Header -->
+                        <div class="grid grid-cols-6 gap-4 mb-8 text-center font-bold text-gray-500 border-b pb-4">
+                            <div>1894<small class="block text-xs">創業</small></div>
+                            <div>1910<small class="block text-xs">年代</small></div>
+                            <div>1980<small class="block text-xs">年代</small></div>
+                            <div>2000<small class="block text-xs">年代</small></div>
+                            <div>2010<small class="block text-xs">年代</small></div>
+                            <div>2020<small class="block text-xs">年代</small></div>
+                        </div>
+
+                        <!-- Phonon Meiwa Products -->
+                        <div class="flex items-center mb-8">
+                            <div class="w-32 font-bold text-primary shrink-0">フォノン明和</div>
+                            <div class="flex-1 grid grid-cols-6 gap-4">
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        創業時の様子</div>
+                                    <p>碍子</p>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        基板</div>
+                                    <p>基板</p>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        フェライト</div>
+                                    <p>フェライトコア</p>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        ドラムコア</div>
+                                    <p>ドラムコア</p>
+                                </div>
+                                <div class="col-span-2 text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        極小部品</div>
+                                    <p>より小型に</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Final Products -->
-                    <div class="vh-row vh-final-products">
-                        <div class="vh-label">最終製品</div>
-                        <div class="vh-items">
-                            <div class="vh-item-group group-early">
-                                <div class="vh-img-placeholder">蓄音機・扇風機</div>
-                                <div class="vh-img-placeholder">家電</div>
-                                <p>蓄音機・扇風機<br>冷蔵庫<br>TV・洗濯機</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">PC・家電</div>
-                                <p>エアコン<br>パソコン・炊飯器</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">モバイル</div>
-                                <p>ノートPC<br>携帯電話</p>
-                            </div>
-                            <div class="vh-item-group">
-                                <div class="vh-img-placeholder">スマホ・EV</div>
-                                <p>スマートフォン<br>電気自動車<br>自動運転・ロボット</p>
+                        <!-- Final Products -->
+                        <div class="flex items-center">
+                            <div class="w-32 font-bold text-dark shrink-0">最終製品</div>
+                            <div class="flex-1 grid grid-cols-6 gap-4">
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        蓄音機</div>
+                                    <p class="text-xs">蓄音機・扇風機<br>冷蔵庫</p>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        家電</div>
+                                    <p class="text-xs">エアコン<br>パソコン</p>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        モバイル</div>
+                                    <p class="text-xs">ノートPC<br>携帯電話</p>
+                                </div>
+                                <div class="col-span-3 text-center text-sm">
+                                    <div
+                                        class="bg-gray-100 h-20 rounded mb-2 flex items-center justify-center text-gray-400 text-xs">
+                                        スマホ・EV</div>
+                                    <p class="text-xs">スマートフォン・電気自動車・ロボット</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <div class="history-container">
+        <!-- 3. Timeline Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
 
-                <!-- 1890年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1890年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1894年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">藤井製陶所創立</h3>
-                                <p class="history-event-desc">愛知県瀬戸市宮脇町に藤井製陶所を創立。</p>
+                <!-- 1890s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1890年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1894年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">藤井製陶所創立</h4>
+                                <p class="text-gray-600">愛知県瀬戸市宮脇町に藤井製陶所を創立。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 1950年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1950年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1952年 7月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">明和工業株式会社へ組織変更</h3>
-                                <p class="history-event-desc">組織変更して明和工業株式会社になる(資本金50万円)。</p>
+                <!-- 1950s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1950年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1952年 7月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">明和工業株式会社へ組織変更</h4>
+                                <p class="text-gray-600">組織変更して明和工業株式会社になる(資本金50万円)。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 1960年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1960年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1960年 3月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">春日井工場建設</h3>
-                                <p class="history-event-desc">春日井市の誘致により春日井工場を建設する。</p>
+                <!-- 1960s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1960年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1960年 3月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">春日井工場建設</h4>
+                                <p class="text-gray-600">春日井市の誘致により春日井工場を建設する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1962年 3月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">新和通信機株式会社を吸収合併</h3>
-                                <p class="history-event-desc">姉妹会社である新和通信機株式会社を吸収合併し、明和工業株式会社名古屋工場として事業を受け継ぐ(資本金700万円)。
-                                </p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1962年 3月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">新和通信機株式会社を吸収合併</h4>
+                                <p class="text-gray-600">姉妹会社である新和通信機株式会社を吸収合併し、明和工業株式会社名古屋工場として事業を受け継ぐ(資本金700万円)。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1963年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">名古屋工場の事業継承</h3>
-                                <p class="history-event-desc">春日井工場を増築して名古屋工場の事業を継承し名古屋工場を閉鎖する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1963年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">名古屋工場の事業継承</h4>
+                                <p class="text-gray-600">春日井工場を増築して名古屋工場の事業を継承し名古屋工場を閉鎖する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1967年 12月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">増資</h3>
-                                <p class="history-event-desc">資本金2100万円とする。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1967年 12月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">増資</h4>
+                                <p class="text-gray-600">資本金2100万円とする。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 1970年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1970年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1979年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">本社及び瀬戸工場移転</h3>
-                                <p class="history-event-desc">愛知県瀬戸市穴田町に本社及び瀬戸工場を新設し移転する。</p>
+                <!-- 1970s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1970年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1979年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">本社及び瀬戸工場移転</h4>
+                                <p class="text-gray-600">愛知県瀬戸市穴田町に本社及び瀬戸工場を新設し移転する。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 1980年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1980年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1984年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">瀬戸第2工場新設</h3>
-                                <p class="history-event-desc">瀬戸市穴田町の企業団地内に瀬戸第2工場を新設する。</p>
+                <!-- 1980s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1980年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1984年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">瀬戸第2工場新設</h4>
+                                <p class="text-gray-600">瀬戸市穴田町の企業団地内に瀬戸第2工場を新設する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1989年 3月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">2事業部制導入</h3>
-                                <p class="history-event-desc">CR事業部・FC事業部の2事業部制をとる。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1989年 3月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">2事業部制導入</h4>
+                                <p class="text-gray-600">CR事業部・FC事業部の2事業部制をとる。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 1990年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">1990年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">1993年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和設立</h3>
-                                <p class="history-event-desc">ベトナム社会主義共和国ドンナイ省ビエンホア2工業団地に VIETNAM MEIWA
+                <!-- 1990s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">1990年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1993年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和設立</h4>
+                                <p class="text-gray-600">ベトナム社会主義共和国ドンナイ省ビエンホア2工業団地に VIETNAM MEIWA
                                     CO.,LTD.（ベトナム明和）を設立する(資本金1014.9万米ドル)。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1995年 9月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">株式会社誘電研究所に資本参加</h3>
-                                <p class="history-event-desc">明和工業株式会社が株式会社誘電研究所に資本参加する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1995年 9月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">株式会社誘電研究所に資本参加</h4>
+                                <p class="text-gray-600">明和工業株式会社が株式会社誘電研究所に資本参加する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1996年 9月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">株式会社フォノン明和へ社名変更</h3>
-                                <p class="history-event-desc">株式会社誘電研究所の社名を株式会社フォノン明和とする。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1996年 9月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">株式会社フォノン明和へ社名変更</h4>
+                                <p class="text-gray-600">株式会社誘電研究所の社名を株式会社フォノン明和とする。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1997年 4月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">合併・社名変更</h3>
-                                <p class="history-event-desc">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1997年 4月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">合併・社名変更</h4>
+                                <p class="text-gray-600">
                                     株式会社フォノン明和と合併し、明和工業株式会社の社名を株式会社フォノン明和とし、CR事業部・FC事業部・CD事業部の3事業部制をとる(資本金1億4600万円)。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1998年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">増資</h3>
-                                <p class="history-event-desc">資本金2億4600万円とする。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1998年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">増資</h4>
+                                <p class="text-gray-600">資本金2億4600万円とする。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">1998年 3月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">台湾フォノン明和設立</h3>
-                                <p class="history-event-desc">中華民国に販売会社 台灣豐隆明和股份有限公司（台湾フォノン明和）を設立する(資本金2300万NTドル）。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">1998年 3月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">台湾フォノン明和設立</h4>
+                                <p class="text-gray-600">中華民国に販売会社 台灣豐隆明和股份有限公司（台湾フォノン明和）を設立する(資本金2300万NTドル）。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 2000年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">2000年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">2000年 2月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">増資</h3>
-                                <p class="history-event-desc">資本金3億600万円とする。</p>
+                <!-- 2000s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">2000年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2000年 2月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">増資</h4>
+                                <p class="text-gray-600">資本金3億600万円とする。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2000年 9月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">新潟事業所移転</h3>
-                                <p class="history-event-desc">新潟県阿賀野市の京ヶ瀬工業団地に新潟事業所を移転する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2000年 9月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">新潟事業所移転</h4>
+                                <p class="text-gray-600">新潟県阿賀野市の京ヶ瀬工業団地に新潟事業所を移転する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2001年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">事業所集約</h3>
-                                <p class="history-event-desc">研究所を瀬戸第2事業所へ移転し、春日井事業所を瀬戸事業所へ集約し、春日井事業所を閉鎖する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2001年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">事業所集約</h4>
+                                <p class="text-gray-600">研究所を瀬戸第2事業所へ移転し、春日井事業所を瀬戸事業所へ集約し、春日井事業所を閉鎖する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2001年 12月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ISO 9001認証取得</h3>
-                                <p class="history-event-desc">品質マネジメントシステムの国際規格を取得。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2001年 12月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ISO 9001認証取得</h4>
+                                <p class="text-gray-600">品質マネジメントシステムの国際規格を取得。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2004年 3月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ISO 14001認証取得</h3>
-                                <p class="history-event-desc">環境マネジメントシステムの国際規格を取得。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2004年 3月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ISO 14001認証取得</h4>
+                                <p class="text-gray-600">環境マネジメントシステムの国際規格を取得。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2006年 4月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">組織変更</h3>
-                                <p class="history-event-desc">組織変更して部課制を廃止し、グループ・チーム制を導入。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2006年 4月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">組織変更</h4>
+                                <p class="text-gray-600">組織変更して部課制を廃止し、グループ・チーム制を導入。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2006年 4月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和 アマタ工場新設</h3>
-                                <p class="history-event-desc">ベトナム ドンナイ省アマタ工業団地にベトナム明和 アマタ工場を新設する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2006年 4月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和 アマタ工場新設</h4>
+                                <p class="text-gray-600">ベトナム ドンナイ省アマタ工業団地にベトナム明和 アマタ工場を新設する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2008年 1月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">本社・瀬戸事業所移転統合</h3>
-                                <p class="history-event-desc">本社・瀬戸事業所を瀬戸第２事業所へ移転統合する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2008年 1月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">本社・瀬戸事業所移転統合</h4>
+                                <p class="text-gray-600">本社・瀬戸事業所を瀬戸第２事業所へ移転統合する。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 2010年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">2010年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">2013年 4月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">東北明和株式会社を吸収合併</h3>
-                                <p class="history-event-desc">100％子会社である東北明和株式会社を吸収合併する。</p>
+                <!-- 2010s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">2010年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2013年 4月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">東北明和株式会社を吸収合併</h4>
+                                <p class="text-gray-600">100％子会社である東北明和株式会社を吸収合併する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2015年 2月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和 工場拡張・移転</h3>
-                                <p class="history-event-desc">ベトナム ビエンホア工場に事務所棟、第３工場、第４工場を建築し、アマタ工場を移転する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2015年 2月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和 工場拡張・移転</h4>
+                                <p class="text-gray-600">ベトナム ビエンホア工場に事務所棟、第３工場、第４工場を建築し、アマタ工場を移転する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2017年 11月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">新潟事業所 第２工場建築</h3>
-                                <p class="history-event-desc">新潟事業所に第２工場を建築する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2017年 11月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">新潟事業所 第２工場建築</h4>
+                                <p class="text-gray-600">新潟事業所に第２工場を建築する。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2019年 12月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和 第５工場建築</h3>
-                                <p class="history-event-desc">ベトナムに第５工場を建築する。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2019年 12月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和 第５工場建築</h4>
+                                <p class="text-gray-600">ベトナムに第５工場を建築する。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- 2020年代 -->
-                <section class="history-decade-block">
-                    <h2 class="history-decade-title">2020年代</h2>
-                    <div class="history-table">
-                        <div class="history-row">
-                            <div class="history-date">2020年 2月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和 第5工場竣工</h3>
-                                <p class="history-event-desc">ベトナム明和 第5工場が竣工。</p>
+                <!-- 2020s -->
+                <div class="mb-16 reveal-on-scroll">
+                    <h3 class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-8">2020年代</h3>
+                    <div class="space-y-8">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2020年 2月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和 第5工場竣工</h4>
+                                <p class="text-gray-600">ベトナム明和 第5工場が竣工。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2023年 7月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">国内事業所 太陽光発電開始</h3>
-                                <p class="history-event-desc">瀬戸事業所・新潟事業所にて太陽光発電を開始。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2023年 7月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">国内事業所 太陽光発電開始</h4>
+                                <p class="text-gray-600">瀬戸事業所・新潟事業所にて太陽光発電を開始。</p>
                             </div>
                         </div>
-                        <div class="history-row">
-                            <div class="history-date">2023年 8月</div>
-                            <div class="history-content">
-                                <h3 class="history-event-title">ベトナム明和 太陽光発電開始</h3>
-                                <p class="history-event-desc">ベトナム明和にて太陽光発電を開始。</p>
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <div class="md:w-32 font-bold text-gray-500 shrink-0">2023年 8月</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark mb-2">ベトナム明和 太陽光発電開始</h4>
+                                <p class="text-gray-600">ベトナム明和にて太陽光発電を開始。</p>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
             </div>
-        </div>
+        </section>
+
     </main>
 
+    <!-- Global Footer -->
     <footer class="global-footer">
         <div class="footer-inner">
             <div class="footer-info">
@@ -557,6 +650,30 @@
         </div>
     </footer>
 
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.reveal-on-scroll');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 
 </html>

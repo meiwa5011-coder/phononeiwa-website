@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>経営理念 | 株式会社フォノン明和</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="jsmain.js" defer></script>
     <meta property="og:title" content="経営理念 | 株式会社フォノン明和">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.phonon-meiwa.co.jp/company_philosophy.html">
@@ -14,86 +12,78 @@
     <meta property="og:description" content="株式会社フォノン明和の経営理念をご紹介します。">
     <meta property="og:site_name" content="株式会社フォノン明和">
     <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004d9c',
+                        accent: '#e60012',
+                        dark: '#0f172a',
+                        'slate-light': '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="main.css">
+    <script src="jsmain.js" defer></script>
     <style>
-        .page-header {
-            background-color: #f0f0f0;
-            padding: 60px 0;
-            text-align: center;
-            margin-bottom: 60px;
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: #333;
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        .philosophy-section {
-            margin-bottom: 80px;
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
         }
 
-        .philosophy-box {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            margin-bottom: 40px;
-            border: 1px solid #eee;
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .philosophy-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-weight: bold;
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .philosophy-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .philosophy-desc {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.8;
-            text-align: left;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .value-item {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .value-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .value-item p {
-            color: #555;
-            line-height: 1.6;
+        /* Parallax Background */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
 
-<body>
+<body class="font-sans text-gray-800 bg-white antialiased">
 
+    <!-- Global Header -->
     <header class="global-header">
         <div class="header-inner">
             <h1 class="logo">
@@ -102,7 +92,7 @@
             <div class="language-selector">
                 <div class="lang-switch">
                     <button class="lang-current" aria-label="Select Language">
-                        <span class="lang-icon">🌐</span> Language <span class="arrow">▼</span>
+                        <span class="lang-icon">🌐</span> 日本語 <span class="arrow">▼</span>
                     </button>
                     <ul class="lang-menu">
                         <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
@@ -117,8 +107,8 @@
                     <li>
                         <a href="#">ニュース</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>ニュース</h3>
                                     <ul>
@@ -132,8 +122,8 @@
                     <li>
                         <a href="company.html">会社情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>会社概要</h3>
                                     <ul>
@@ -156,8 +146,8 @@
                     <li>
                         <a href="#">製品情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>製品カテゴリ</h3>
                                     <ul>
@@ -182,8 +172,8 @@
                     <li>
                         <a href="#">サステナビリティ</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>環境への取り組み</h3>
                                     <ul>
@@ -207,8 +197,8 @@
                     <li>
                         <a href="#">採用情報</a>
                         <div class="mega-menu">
-
                             <div class="mega-menu-content">
+                                <button class="mega-menu-close" aria-label="閉じる">×</button>
                                 <div class="mega-menu-column">
                                     <h3>採用情報</h3>
                                     <ul>
@@ -240,49 +230,101 @@
         </div>
     </header>
 
-    <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>経営理念</h1>
+    <main class="overflow-hidden">
+        <!-- 1. Hero Section -->
+        <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0 parallax-bg"
+                style="background-image: url('images/company_philosophy.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/50 to-transparent"></div>
             </div>
-        </div>
 
-        <div class="container">
-            <section class="philosophy-section">
-                <div class="philosophy-box">
-                    <div class="philosophy-title">経営理念</div>
-                    <div class="philosophy-text">
-                        Creation & Challenge<br>
+            <div class="relative z-10 container mx-auto px-6 text-center">
+                <div class="reveal-on-scroll is-visible">
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-widest mb-4 text-accent uppercase">Corporate
+                        Philosophy</h2>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-white">
+                        PHILOSOPHY
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-100 font-medium tracking-wider">
+                        経営理念
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Philosophy Content -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-5xl">
+
+                <!-- Mission Statement -->
+                <div class="text-center mb-24 reveal-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-black text-primary mb-8 tracking-tight">
+                        Creation & Challenge
+                    </h2>
+                    <p class="text-2xl md:text-3xl font-bold text-dark mb-12">
                         創造と挑戦で、未来を切り拓く
-                    </div>
-                    <div class="philosophy-desc">
-                        <p>私たちは、独自の技術と創造力で、常に新しい価値の創造に挑戦し続けます。<br>
-                            お客様、社員、地域社会、すべてのステークホルダーの幸福を追求し、<br>
-                            持続可能な社会の実現に貢献します。</p>
+                    </p>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-12"></div>
+                    <p class="text-lg text-gray-600 leading-loose max-w-3xl mx-auto">
+                        私たちは、独自の技術と創造力で、常に新しい価値の創造に挑戦し続けます。<br>
+                        お客様、社員、地域社会、すべてのステークホルダーの幸福を追求し、<br>
+                        持続可能な社会の実現に貢献します。
+                    </p>
+                </div>
+
+                <!-- Action Guidelines (Values) -->
+                <div class="reveal-on-scroll">
+                    <h3 class="text-3xl font-bold text-center text-dark mb-16">行動指針 (Values)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                        <!-- Value 1 -->
+                        <div
+                            class="bg-slate-light p-10 rounded-xl text-center hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-4xl">
+                                🤝
+                            </div>
+                            <h4 class="text-xl font-bold text-primary mb-4">誠実 (Integrity)</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                常に誠実に行動し、信頼される企業を目指します。
+                            </p>
+                        </div>
+
+                        <!-- Value 2 -->
+                        <div
+                            class="bg-slate-light p-10 rounded-xl text-center hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-4xl">
+                                🚀
+                            </div>
+                            <h4 class="text-xl font-bold text-primary mb-4">革新 (Innovation)</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                現状に満足せず、常に改善と革新を追求します。
+                            </p>
+                        </div>
+
+                        <!-- Value 3 -->
+                        <div
+                            class="bg-slate-light p-10 rounded-xl text-center hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-4xl">
+                                💎
+                            </div>
+                            <h4 class="text-xl font-bold text-primary mb-4">品質 (Quality)</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                妥協のない品質で、お客様の期待に応えます。
+                            </p>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="philosophy-box">
-                    <div class="philosophy-title">行動指針</div>
-                    <div class="values-grid">
-                        <div class="value-item">
-                            <h3>誠実 (Integrity)</h3>
-                            <p>常に誠実に行動し、信頼される企業を目指します。</p>
-                        </div>
-                        <div class="value-item">
-                            <h3>革新 (Innovation)</h3>
-                            <p>現状に満足せず、常に改善と革新を追求します。</p>
-                        </div>
-                        <div class="value-item">
-                            <h3>品質 (Quality)</h3>
-                            <p>妥協のない品質で、お客様の期待に応えます。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Global Footer -->
     <footer class="global-footer">
         <div class="footer-inner">
             <div class="footer-info">
@@ -305,6 +347,30 @@
         </div>
     </footer>
 
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.reveal-on-scroll');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 
 </html>
