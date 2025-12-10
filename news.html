@@ -13,19 +13,33 @@
     <meta property="og:site_name" content="株式会社フォノン明和">
     <meta name="twitter:card" content="summary_large_image">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#004d9c',
-                        accent: '#e60012',
+                        primary: '#004d9c', // Phonon Blue
+                        secondary: '#003366', // Deep Navy
+                        accent: '#0ea5e9', // Sky Blue
                         dark: '#0f172a',
-                        'slate-light': '#f8f9fa',
+                        'slate-light': '#f8fafc',
+                        'slate-border': '#e2e8f0',
                     },
                     fontFamily: {
-                        sans: ['"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                        sans: ['"Noto Sans JP"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        en: ['"Montserrat"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(0, 77, 156, 0.15)',
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -46,17 +60,14 @@
     <style>
         /* Custom Utilities */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
+        /* Diagonal Clips - Subtle */
         .clip-diagonal {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        .clip-diagonal-reverse {
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
 
         /* Animation Classes */
@@ -71,18 +82,6 @@
             transform: translateY(0);
         }
 
-        .stagger-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .stagger-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .stagger-delay-3 {
-            transition-delay: 0.3s;
-        }
-
         /* Parallax Background */
         .parallax-bg {
             background-attachment: fixed;
@@ -90,155 +89,210 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        /* Modern Button Hover */
+        .btn-hover-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hover-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .btn-hover-slide:hover::before {
+            left: 0;
+        }
     </style>
 </head>
 
-<body class="font-sans text-gray-800 bg-white antialiased">
+<body class="font-sans text-gray-800 bg-white antialiased selection:bg-primary selection:text-white">
 
     <!-- Global Header -->
-    <header class="global-header">
-        <div class="header-inner">
-            <h1 class="logo">
-                <a href="index.html"><img src="images/logo.gif" alt="Phonon Meiwa Inc."></a>
+    <header class="global-header bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <div class="header-inner container mx-auto px-6 h-20 flex justify-between items-center">
+            <h1 class="logo flex-shrink-0">
+                <a href="index.html"><img src="images/logo.gif" alt="Phonon Meiwa Inc." class="h-10"></a>
             </h1>
-            <div class="language-selector">
-                <div class="lang-switch">
-                    <button class="lang-current" aria-label="Select Language">
-                        <span class="lang-icon">🌐</span> 日本語 <span class="arrow">▼</span>
-                    </button>
-                    <ul class="lang-menu">
-                        <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
-                        <li><a href="index_en.html" data-lang="en">English</a></li>
-                        <li><a href="index_zh.html" data-lang="zh">中文</a></li>
-                        <li><a href="index_ko.html" data-lang="ko">한국어</a></li>
+
+            <div class="flex items-center gap-6">
+                <!-- Navigation -->
+                <nav class="global-nav hidden lg:block">
+                    <ul class="flex space-x-8">
+                        <li>
+                            <a href="#"
+                                class="nav-link group py-6 inline-block font-medium text-gray-700 hover:text-primary transition-colors">
+                                ニュース
+                                <span
+                                    class="block h-0.5 w-0 bg-primary absolute bottom-0 transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <button class="mega-menu-close" aria-label="Close">×</button>
+                                    <div class="mega-menu-column">
+                                        <h3>News</h3>
+                                        <ul>
+                                            <li><a href="news.html">新着情報</a></li>
+                                            <li><a href="news.html">お知らせ一覧</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="company.html"
+                                class="nav-link group py-6 inline-block font-medium text-gray-700 hover:text-primary transition-colors">
+                                会社情報
+                            </a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <button class="mega-menu-close" aria-label="Close">×</button>
+                                    <div class="mega-menu-column">
+                                        <h3>会社概要</h3>
+                                        <ul>
+                                            <li><a href="company_philosophy.html">企業理念</a></li>
+                                            <li><a href="company_message.html">社長挨拶</a></li>
+                                            <li><a href="company_profile.html">会社概要</a></li>
+                                            <li><a href="company_history.html">沿革</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>企業情報</h3>
+                                        <ul>
+                                            <li><a href="company_office.html">拠点一覧</a></li>
+                                            <li><a href="company_policy.html">品質・環境方針</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="nav-link group py-6 inline-block font-medium text-gray-700 hover:text-primary transition-colors">
+                                製品情報
+                            </a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <button class="mega-menu-close" aria-label="Close">×</button>
+                                    <div class="mega-menu-column">
+                                        <h3>製品カテゴリ</h3>
+                                        <ul>
+                                            <li><a href="products.html">フェライトコア</a></li>
+                                            <li><a href="products.html">セラミック基板</a></li>
+                                            <li><a href="products.html">電子部品</a></li>
+                                            <li><a href="products.html">新製品情報</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>技術情報</h3>
+                                        <ul>
+                                            <li><a href="#">技術資料</a></li>
+                                            <li><a href="#">カタログダウンロード</a></li>
+                                            <li><a href="#">技術サポート</a></li>
+                                            <li><a href="#">よくあるご質問</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="nav-link group py-6 inline-block font-medium text-gray-700 hover:text-primary transition-colors">
+                                サステナビリティ
+                            </a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <button class="mega-menu-close" aria-label="Close">×</button>
+                                    <div class="mega-menu-column">
+                                        <h3>環境への取り組み</h3>
+                                        <ul>
+                                            <li><a href="sustainability.html">環境方針</a></li>
+                                            <li><a href="sustainability.html">環境マネジメント</a></li>
+                                            <li><a href="sustainability.html">環境報告書</a></li>
+                                            <li><a href="sustainability.html">グリーン調達</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>CSR</h3>
+                                        <ul>
+                                            <li><a href="sustainability.html">社会貢献</a></li>
+                                            <li><a href="sustainability.html">地域活動</a></li>
+                                            <li><a href="sustainability.html">働き方改革</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="nav-link group py-6 inline-block font-medium text-gray-700 hover:text-primary transition-colors">
+                                採用情報
+                            </a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <button class="mega-menu-close" aria-label="Close">×</button>
+                                    <div class="mega-menu-column">
+                                        <h3>採用情報</h3>
+                                        <ul>
+                                            <li><a href="recruit.html">新卒採用</a></li>
+                                            <li><a href="recruit.html">キャリア採用</a></li>
+                                            <li><a href="recruit.html">インターンシップ</a></li>
+                                            <li><a href="recruit.html">社員インタビュー</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>働く環境</h3>
+                                        <ul>
+                                            <li><a href="recruit.html">福利厚生</a></li>
+                                            <li><a href="recruit.html">研修制度</a></li>
+                                            <li><a href="recruit.html">ワークライフバランス</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="contact.html"
+                                class="nav-contact-button bg-primary !text-white !px-8 !py-3 rounded-full font-bold hover:bg-secondary transition-colors btn-hover-slide shadow-lg">
+                                お問い合わせ
+                            </a>
+                        </li>
                     </ul>
+                </nav>
+
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-switch">
+                        <button
+                            class="lang-current flex items-center gap-2 border border-gray-200 rounded-full px-4 py-1.5 text-sm font-medium hover:border-primary hover:text-primary transition-colors"
+                            aria-label="Select Language">
+                            <span class="lang-icon">🌐</span> 日本語 <span class="arrow text-[10px]">▼</span>
+                        </button>
+                        <ul class="lang-menu">
+                            <li><a href="index.html" data-lang="ja" class="active">日本語</a></li>
+                            <li><a href="index_en.html" data-lang="en">English</a></li>
+                            <li><a href="index_zh.html" data-lang="zh">中文</a></li>
+                            <li><a href="index_ko.html" data-lang="ko">한국어</a></li>
+                        </ul>
+                    </div>
                 </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle lg:hidden block w-8 h-6 relative focus:outline-none"
+                    aria-label="Toggle Menu">
+                    <span class="block w-full h-0.5 bg-dark absolute top-0 transition-all duration-300"></span>
+                    <span
+                        class="block w-full h-0.5 bg-dark absolute top-1/2 -translate-y-1/2 transition-all duration-300"></span>
+                    <span class="block w-full h-0.5 bg-dark absolute bottom-0 transition-all duration-300"></span>
+                </button>
             </div>
-            <nav class="global-nav">
-                <ul>
-                    <li>
-                        <a href="#">ニュース</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <button class="mega-menu-close" aria-label="閉じる">×</button>
-                                <div class="mega-menu-column">
-                                    <h3>ニュース</h3>
-                                    <ul>
-                                        <li><a href="news.html">新着情報</a></li>
-                                        <li><a href="news.html">お知らせ一覧</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="company.html">会社情報</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <button class="mega-menu-close" aria-label="閉じる">×</button>
-                                <div class="mega-menu-column">
-                                    <h3>会社概要</h3>
-                                    <ul>
-                                        <li><a href="company_philosophy.html">経営理念</a></li>
-                                        <li><a href="company_message.html">社長メッセージ</a></li>
-                                        <li><a href="company_profile.html">会社概要</a></li>
-                                        <li><a href="company_history.html">沿革</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>企業情報</h3>
-                                    <ul>
-                                        <li><a href="company_office.html">事業所一覧</a></li>
-                                        <li><a href="company_policy.html">品質・環境方針</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#">製品情報</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <button class="mega-menu-close" aria-label="閉じる">×</button>
-                                <div class="mega-menu-column">
-                                    <h3>製品カテゴリ</h3>
-                                    <ul>
-                                        <li><a href="products.html">フェライトコア</a></li>
-                                        <li><a href="products.html">セラミック基板</a></li>
-                                        <li><a href="products.html">電子部品</a></li>
-                                        <li><a href="products.html">新製品情報</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>技術情報</h3>
-                                    <ul>
-                                        <li><a href="#">技術資料</a></li>
-                                        <li><a href="#">カタログダウンロード</a></li>
-                                        <li><a href="#">技術サポート</a></li>
-                                        <li><a href="#">よくあるご質問</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#">サステナビリティ</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <button class="mega-menu-close" aria-label="閉じる">×</button>
-                                <div class="mega-menu-column">
-                                    <h3>環境への取り組み</h3>
-                                    <ul>
-                                        <li><a href="sustainability.html">環境方針</a></li>
-                                        <li><a href="sustainability.html">環境マネジメント</a></li>
-                                        <li><a href="sustainability.html">環境報告書</a></li>
-                                        <li><a href="sustainability.html">グリーン調達</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>CSR活動</h3>
-                                    <ul>
-                                        <li><a href="sustainability.html">社会貢献活動</a></li>
-                                        <li><a href="sustainability.html">地域貢献</a></li>
-                                        <li><a href="sustainability.html">従業員の働き方</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#">採用情報</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <button class="mega-menu-close" aria-label="閉じる">×</button>
-                                <div class="mega-menu-column">
-                                    <h3>採用情報</h3>
-                                    <ul>
-                                        <li><a href="recruit.html">新卒採用</a></li>
-                                        <li><a href="recruit.html">キャリア採用</a></li>
-                                        <li><a href="recruit.html">インターンシップ</a></li>
-                                        <li><a href="recruit.html">社員インタビュー</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>働く環境</h3>
-                                    <ul>
-                                        <li><a href="recruit.html">福利厚生</a></li>
-                                        <li><a href="recruit.html">研修制度</a></li>
-                                        <li><a href="recruit.html">ワークライフバランス</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="contact.html" class="nav-contact-button">お問い合わせ</a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle" aria-label="メニュー開閉">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
@@ -246,14 +300,15 @@
         <!-- 1. Hero Section: Parallax & High Impact -->
         <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0 parallax-bg" style="background-image: url('images/hero1.jpg');">
-                <div class="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/50 to-transparent"></div>
+                <!-- Overlay: Blue Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-r from-secondary/90 via-primary/60 to-transparent"></div>
             </div>
 
             <div class="relative z-10 container mx-auto px-6 text-center">
                 <div class="reveal-on-scroll is-visible">
-                    <h2 class="text-xl md:text-2xl font-extrabold tracking-widest mb-4 text-accent uppercase">Latest
+                    <h2 class="font-en text-xl md:text-2xl font-bold tracking-[0.2em] mb-4 text-accent uppercase">Latest
                         Updates</h2>
-                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-white">
+                    <h1 class="font-en text-5xl md:text-7xl font-bold leading-tight mb-6 text-white tracking-tight">
                         NEWS
                     </h1>
                     <p class="text-lg md:text-xl text-gray-100 font-medium tracking-wider">
@@ -261,7 +316,6 @@
                     </p>
                 </div>
             </div>
-
         </section>
 
         <!-- 2. News List Section -->
@@ -270,7 +324,7 @@
 
                 <!-- Category Tabs -->
                 <div class="flex justify-center mb-16 reveal-on-scroll">
-                    <div class="inline-flex bg-gray-100 rounded-full p-1 shadow-inner">
+                    <div class="inline-flex bg-slate-light rounded-full p-1 shadow-inner border border-slate-border">
                         <button
                             class="tab-btn px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-white text-primary shadow-md"
                             data-category="all">
@@ -289,109 +343,145 @@
                     </div>
                 </div>
 
-                <div class="space-y-8 reveal-on-scroll" id="news-list">
+                <div class="space-y-6 reveal-on-scroll" id="news-list">
 
                     <!-- News Item 1 -->
                     <article
-                        class="news-item group relative bg-white border-b border-gray-100 pb-8 hover:bg-gray-50 transition-colors p-6 rounded-lg"
+                        class="news-item group relative bg-white border border-transparent border-b-gray-100 p-8 hover:bg-slate-light hover:border-slate-border rounded-xl transition-all duration-300"
                         data-category="notice">
-                        <div class="flex flex-col md:flex-row gap-6">
-                            <div class="md:w-32 flex-shrink-0">
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="md:w-36 flex-shrink-0">
                                 <time datetime="2025-07-01"
-                                    class="block text-sm font-bold text-gray-500">2025.07.01</time>
+                                    class="font-en block text-lg font-bold text-gray-400 group-hover:text-primary transition-colors">2025.07.01</time>
                                 <span
-                                    class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded mt-2">お知らせ</span>
+                                    class="inline-block px-2.5 py-0.5 border border-primary text-primary text-xs font-bold rounded mt-2">お知らせ</span>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                                <h3
+                                    class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors leading-snug">
                                     VIETNAM MEIWA CO., LTD. 住所変更のお知らせ
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <p class="text-gray-600 font-medium leading-relaxed mb-4 text-sm">
                                     VIETNAM MEIWA CO., LTD.(ベトナム明和)の住所が以下の通り変更となりました。<br>
                                     Road 15A, Bien Hoa Industrial Zone II, Tran Bien Ward, Dong Nai Province, Vietnam
                                 </p>
+                            </div>
+                            <div
+                                class="hidden md:flex items-center text-gray-300 group-hover:text-primary transition-colors self-center">
+                                <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
                             </div>
                         </div>
                     </article>
 
                     <!-- News Item 2 -->
                     <article
-                        class="news-item group relative bg-white border-b border-gray-100 pb-8 hover:bg-gray-50 transition-colors p-6 rounded-lg"
+                        class="news-item group relative bg-white border border-transparent border-b-gray-100 p-8 hover:bg-slate-light hover:border-slate-border rounded-xl transition-all duration-300"
                         data-category="products">
-                        <div class="flex flex-col md:flex-row gap-6">
-                            <div class="md:w-32 flex-shrink-0">
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="md:w-36 flex-shrink-0">
                                 <time datetime="2025-06-15"
-                                    class="block text-sm font-bold text-gray-500">2025.06.15</time>
+                                    class="font-en block text-lg font-bold text-gray-400 group-hover:text-primary transition-colors">2025.06.15</time>
                                 <span
-                                    class="inline-block px-3 py-1 bg-accent text-white text-xs font-bold rounded mt-2">製品情報</span>
+                                    class="inline-block px-2.5 py-0.5 border border-accent text-accent text-xs font-bold rounded mt-2">製品情報</span>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                                <h3
+                                    class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors leading-snug">
                                     新製品「高周波対応フェライトコア」の販売を開始しました
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <p class="text-gray-600 font-medium leading-relaxed mb-4 text-sm">
                                     5G通信基地局向けの高性能フェライトコアの量産を開始しました。従来製品と比較して、高周波帯域での損失を大幅に低減しています。
                                 </p>
+                            </div>
+                            <div
+                                class="hidden md:flex items-center text-gray-300 group-hover:text-primary transition-colors self-center">
+                                <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
                             </div>
                         </div>
                     </article>
 
                     <!-- News Item 3 -->
                     <article
-                        class="news-item group relative bg-white border-b border-gray-100 pb-8 hover:bg-gray-50 transition-colors p-6 rounded-lg"
+                        class="news-item group relative bg-white border border-transparent border-b-gray-100 p-8 hover:bg-slate-light hover:border-slate-border rounded-xl transition-all duration-300"
                         data-category="notice">
-                        <div class="flex flex-col md:flex-row gap-6">
-                            <div class="md:w-32 flex-shrink-0">
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="md:w-36 flex-shrink-0">
                                 <time datetime="2025-05-20"
-                                    class="block text-sm font-bold text-gray-500">2025.05.20</time>
+                                    class="font-en block text-lg font-bold text-gray-400 group-hover:text-primary transition-colors">2025.05.20</time>
                                 <span
-                                    class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded mt-2">お知らせ</span>
+                                    class="inline-block px-2.5 py-0.5 border border-primary text-primary text-xs font-bold rounded mt-2">お知らせ</span>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                                <h3
+                                    class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors leading-snug">
                                     「TECHNO-FRONTIER 2025」出展のお知らせ
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <p class="text-gray-600 font-medium leading-relaxed mb-4 text-sm">
                                     2025年7月23日(水)～25日(金)に東京ビッグサイトで開催される「TECHNO-FRONTIER 2025」に出展いたします。
                                     皆様のご来場を心よりお待ちしております。
                                 </p>
+                            </div>
+                            <div
+                                class="hidden md:flex items-center text-gray-300 group-hover:text-primary transition-colors self-center">
+                                <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
                             </div>
                         </div>
                     </article>
 
                     <!-- News Item 4 -->
                     <article
-                        class="news-item group relative bg-white border-b border-gray-100 pb-8 hover:bg-gray-50 transition-colors p-6 rounded-lg"
+                        class="news-item group relative bg-white border border-transparent border-b-gray-100 p-8 hover:bg-slate-light hover:border-slate-border rounded-xl transition-all duration-300"
                         data-category="notice">
-                        <div class="flex flex-col md:flex-row gap-6">
-                            <div class="md:w-32 flex-shrink-0">
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="md:w-36 flex-shrink-0">
                                 <time datetime="2025-04-01"
-                                    class="block text-sm font-bold text-gray-500">2025.04.01</time>
+                                    class="font-en block text-lg font-bold text-gray-400 group-hover:text-primary transition-colors">2025.04.01</time>
                                 <span
-                                    class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded mt-2">お知らせ</span>
+                                    class="inline-block px-2.5 py-0.5 border border-primary text-primary text-xs font-bold rounded mt-2">お知らせ</span>
                             </div>
                             <div class="flex-1">
-                                <h3 class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                                <h3
+                                    class="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors leading-snug">
                                     2025年度 入社式を行いました
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <p class="text-gray-600 font-medium leading-relaxed mb-4 text-sm">
                                     本日、2025年度の新入社員入社式を執り行いました。今年は2名の新しい仲間を迎えました。
                                     新入社員のこれからの活躍に期待しています。
                                 </p>
+                            </div>
+                            <div
+                                class="hidden md:flex items-center text-gray-300 group-hover:text-primary transition-colors self-center">
+                                <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
                             </div>
                         </div>
                     </article>
 
                 </div>
 
-                <!-- Pagination (Static for now) -->
-                <div class="mt-16 flex justify-center gap-2 reveal-on-scroll">
+                <!-- Pagination -->
+                <div class="mt-20 flex justify-center gap-3 reveal-on-scroll">
                     <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold rounded hover:bg-dark transition-colors">1</a>
+                        class="w-12 h-12 flex items-center justify-center bg-primary text-white font-en font-bold rounded-full shadow-lg hover:bg-secondary transition-all transform hover:-translate-y-1">1</a>
                     <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-600 font-bold rounded hover:bg-gray-200 transition-colors">2</a>
+                        class="w-12 h-12 flex items-center justify-center bg-white text-gray-500 font-en font-bold rounded-full shadow-sm hover:bg-slate-light hover:text-primary transition-all border border-gray-100">2</a>
                     <a href="#"
-                        class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-600 font-bold rounded hover:bg-gray-200 transition-colors">3</a>
+                        class="w-12 h-12 flex items-center justify-center bg-white text-gray-500 font-en font-bold rounded-full shadow-sm hover:bg-slate-light hover:text-primary transition-all border border-gray-100">3</a>
                 </div>
 
             </div>
@@ -400,24 +490,26 @@
     </main>
 
     <!-- Global Footer -->
-    <footer class="global-footer">
-        <div class="footer-inner">
+    <footer class="global-footer bg-secondary text-gray-300 py-12 border-t border-white/10">
+        <div class="footer-inner container mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-8">
             <div class="footer-info">
-                <p>株式会社フォノン明和</p>
-                <p>〒489-0003　愛知県瀬戸市穴田町965番地</p>
+                <img src="images/logo.gif" alt="Phonon Meiwa Inc." class="h-8 mb-4 brightness-0 invert opacity-80">
+                <p class="font-bold text-white mb-1">株式会社フォノン明和</p>
+                <p class="text-sm">〒489-0003　愛知県瀬戸市穴田町965番地</p>
             </div>
             <nav class="footer-nav">
-                <ul>
-                    <li><a href="index.html">ホーム</a></li>
-                    <li><a href="products.html">製品情報</a></li>
-                    <li><a href="company.html">企業情報</a></li>
-                    <li><a href="sustainability.html">サステナビリティ</a></li>
-                    <li><a href="recruit.html">採用情報</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
+                <ul class="flex flex-wrap gap-x-8 gap-y-3">
+                    <li><a href="index.html" class="hover:text-white transition-colors text-sm">Home</a></li>
+                    <li><a href="products.html" class="hover:text-white transition-colors text-sm">Products</a></li>
+                    <li><a href="company.html" class="hover:text-white transition-colors text-sm">Company</a></li>
+                    <li><a href="sustainability.html"
+                            class="hover:text-white transition-colors text-sm">Sustainability</a></li>
+                    <li><a href="recruit.html" class="hover:text-white transition-colors text-sm">Careers</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors text-sm">Contact</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="copyright">
+        <div class="copyright text-center mt-12 pt-8 border-t border-white/10 text-xs text-gray-500 font-en">
             <small>Copyright (C) 2025 Phonon Meiwa Inc. All Rights Reserved.</small>
         </div>
     </footer>
@@ -465,6 +557,7 @@
                     newsItems.forEach(item => {
                         if (category === 'all' || item.getAttribute('data-category') === category) {
                             item.classList.remove('hidden');
+                            item.style.display = 'block'; // Ensure block display for proper layout
                             // Reset animation
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
@@ -475,6 +568,7 @@
                             }, 50);
                         } else {
                             item.classList.add('hidden');
+                            item.style.display = 'none'; // Hide completely layout-wise
                         }
                     });
                 });
